@@ -47,4 +47,26 @@ for char in w:
     print('----------------')
 
 
-    
+##9JUNECLASS
+mutable_list=['a','b','c','d','e','f','g']#Changing the list of characters 
+print(mutable_list)
+mutable_list[0]='A'
+print(mutable_list)
+#List methods
+new_list=[1,2,3,4]
+new_list.append(5)
+print(new_list)
+new_list.insert(1,45)
+print(new_list)
+new=[1,2,3,4]
+list=[5,6,7,8,9,10,11,12,13]
+new.extend(list)
+#concatenate list "+" operator
+listt=list+new
+print(listt)
+list.remove(13)
+print(list)
+print("This is the 69th line of the file... nice!")
+n=int(input("Enter an index"))
+list.pop(n)
+print(list)
