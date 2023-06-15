@@ -101,9 +101,7 @@ print(output)
 #Tuple:
 #LOOP
 #Write a program to generate all possible combinations of 3 numbers from 1 to 5
-
-numbers = [1, 2, 3, 4, 5 ]
-for x in (numbers):
-    for y in (numbers):
-        for z in (numbers):
+for x in range(1,6):
+    for y in range(1,6):
+        for z in range(1,6):
             print(x, y, z)
