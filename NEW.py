@@ -1,3 +1,4 @@
+from typing import Any
 sr="String Indexing"
 print (sr)
 print (sr[0])
@@ -381,3 +382,589 @@ while True:
 for i in range(5):
     print("*"*i)
 #Functions in python
+def sum(a,b):
+    return a+b
+print(sum(2,3))
+def sum(a,b):
+    return a+b
+    sum(2,3)
+#Function to take two numbers and return the larger number without parameters
+def print_greater():
+    a=int(input("Enter a number"))
+    b=int(input("Enter a number"))
+    if a>b:
+        print(a)
+    else:
+        print(b)
+#Function with parameters and without return 
+a=int(input("Enter a number"))
+b=int(input("Enter a number"))
+def print_greater(a,b):
+    if a>b:
+        print(a)
+    else:
+        print(b)
+print_greater(a,b)
+#Function without parameters and with return 
+a=int(input("Enter a number"))
+b=int(input("Enter a number"))
+def print_greater():
+    if a>b:
+        return a
+    else:
+     return b
+print_greater()
+#Function with parameters and with return
+def find_greater_number(num1, num2):
+    if num1 > num2:
+        return num1
+    else:
+        return num2
+
+result = find_greater_number(10, 20)
+print("The greater number is:", result)
+#Function with parameters and return 
+def function_name(a,b):
+    if a>b:
+            mesg="a is greater than b"
+    else:
+            mesg="a is less than b"
+    return mesg
+a=2
+b=3
+mesg=function_name(a,b)
+print(mesg)
+#Study Global vs Local Variable
+#Args 
+def args(*args):
+  args=list(args)
+  args[0]=0
+  sum=0
+  for i in args:
+    sum+=i
+
+  return sum
+print(args(1,2,3,4,5,56,5,4,46))
+#KWargs
+def print_add(**kwargs):
+   for key,value in kwargs.items():
+    print(f"{key}:{value}")
+
+print_add(city='KTM',
+          STATE='BAGMATI')
+#Recursion
+def fact():
+  print("I am recursion")
+fact()
+
+#Factorial of a number
+n=int(input("Enter a number"))
+def fact(n):
+ if (n==0 or n==1):
+  return 1
+ else:
+  return n*fact(n-1)
+fact(n)
+#Fibonacci series
+def fibonacci(n):
+    if n <= 1:
+        return n
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+for i in range(20):
+    print(fibonacci(i))
+#Class and object
+class Person:
+  name='Apil'
+  occupation='Student'
+  networth=10000
+  def info(self):
+    print(f"{self.name} is a {self.occupation}" )
+a=Person()
+b=Person()
+c=Person()
+a.name='Messi'
+#Access Modifiers
+#According to OOP convention, protected variables can be accessed only by derived class
+#_varname is a protected variable, the protected variables have '_' infront of the name
+#Create private variables:
+class Vehicle:
+  def __init__(self,color="Red"):
+    self.__vehicle_color = color
+  def access_priv(self):
+    return self.__vehicle_color
+
+  def __reset_color(self,color):
+    self.__vehicle_color= color
+
+  def temp(self,color):
+    self.__reset_color(color)
+    print(f"Color reset to  :{self.__vehicle_color}")
+car = Vehicle("Green")
+print(car.access_priv())
+#car.__vehicle_color
+
+#Resetting color
+car.temp("BLUE")
+b.name="Ronaldo"
+b.occupation="Also a footballer"
+a.info()
+b.info()
+c.info()
+
+#Create private variables
+
+class Vehicle:
+  def __init__(self, color):
+    # create private attributes
+    self.__vehicle_color = color
+
+  def access_private(self):
+    return self.__vehicle_color
+
+  # create private methods
+  def __reset_color(self, color):
+    print('Colour Reseting')
+    self.__vehicle_color = color
+
+  # access private methods inside class
+  def reset_display_color(self, color = None):
+    self.__reset_color(color)
+    print(f"Colour after reseting is: {self.__vehicle_color}")
+
+
+# create object
+car = Vehicle('red')
+## access private attributes outside of class
+# car.__vehicle_color
+## access private attributes via public methods
+private_attr = car.access_private()
+print(private_attr)
+## Base class
+class Vehicle:
+  def __init__(self, name, color):
+    self.name = name
+    self.color = color
+ 
+  def start(self):
+    print(f"The {self.color}  {self.name} is starting.")
+ 
+  def stop(self):
+    print(f"The {self.color} {self.name} is stopping.")
+
+#Encaplsulatoin Practice
+class Car:
+    def __init__(self, speed, color):
+        self.__speed = speed
+        self.__color = color
+
+    def set_speed(self, value):
+        self.__speed = value
+
+    def get_speed(self):
+        return self.__speed
+
+    def set_color(self, value):
+        self.__color = value
+
+    def get_color(self):
+        return self.__color
+
+ford = Car(200, "Red")
+honda = Car(250, 'Black')
+audi = Car(260, 'Blue')
+##Changing the values
+ford.set_speed(400)
+ford.__speed=400
+ford.set_color('Orange')
+ford.__color="Cyan"
+print(ford.get_speed())
+print(ford.get_color())
+print("-------")
+
+## Derived class Car
+ 
+class Car(Vehicle):
+  def __init__(self, name, color, fuel_type):
+    super().__init__(name, color) ## super is used to call base class constructor
+    self.fuel_type = fuel_type
+ 
+  def drive(self):
+    print(f"The {self.color} {self.name} is driving.")
+ 
+## Derived class Bike
+class Bike(Vehicle):
+  def __init__(self, name, color, engine_capacity):
+    super().__init__(name, color) ## super is used to call base class constructor
+    self.engine_capacity = engine_capacity
+ 
+  def ride(self):
+    print(f"The {self.color} {self.name} is being ridden.")
+ 
+# Creating instances of derived classes
+car = Car("Car", "Red", "Petrol")
+bike = Bike("Motorcycle", "Blue", 250)
+ 
+# Accessing attributes and calling methods
+print(car.name)  # Output: Car
+print(bike.color)  # Output: Blue
+ 
+car.start()  # Output: The Red Car is starting.
+bike.stop()  # Output: The Blue Motorcycle has stopped.
+ 
+car.drive()  # Output: The Red Car is driving.
+bike.ride()  # Output: The Blue Motorcycle is being ridden.
+
+
+#Write a python program to create two Base class named wheels and engine. From the 2 base classes, create 
+#Base class 1
+class Engine:
+  def start(self):
+    print("The engine is starting")
+  def stop (self):
+    print("The engine has stopped")
+
+  #Base Class 2
+class wheels:
+  def drive(self):
+    print("The wheels are rotating")
+#Derived Class
+class Car(Engine,wheels):
+  def rotate(self):
+    print("The car is being driven")
+    #objectname=derivedclass()
+    #objectname.method()
+    ##MAKE INSTANCE oF DERIVED CLASS, AND ACCESS THE BASE CLASS METHODS USING THE INSTANCE
+car=Car()
+print(type(car))
+
+# access methods of base class "Engine"
+car.start()  # output: The engine is starting.
+car.stop()  # output: The engine has stopped.
+
+# access methods of base class "Wheel"
+car.rotate() # output: The wheels are rotating.
+
+
+#Multilevel inheritance
+ #Syntax class DerivedClass1(Baseclass)
+ #class Derivedclass2(DerivedClass1)
+#Example of multilevel inheritance:
+#Creation of Base class:
+class Vehicle:
+    def __init__(self, name):
+        self.name = name
+    
+    def start(self):
+        print(f"The {self.name} is starting")
+
+class Car(Vehicle):
+    def drive(self):
+        print(f"The {self.name} is being driven")
+
+class SportsCar(Car):
+    def accelerate(self):
+        print(f"The {self.name} is accelerating")
+
+sport_car = SportsCar("Sports Car")
+sport_car.start()  # Output: The Sports Car is starting
+sport_car.drive()  # Output: The Sports Car is being driven
+sport_car.accelerate()  # Output: The Sports Car is accelerating
+
+
+#Hierarchial Inheritance
+#Single base class gets inherited by multiple derived classes
+#Syntax 
+#class A
+#class B(A)
+#class C(A)
+#class D(B)
+#class E(B)
+
+#Example of Hierarchical Inheritance
+#Base class:
+class Vehicle:
+    def __init__(self, name):
+        self.name = name
+
+    def start(self):
+        print(f"The {self.name} is starting.")
+
+    def stop(self):
+        print(f"The {self.name} is stopped.")
+
+#Derived classes:
+class Car(Vehicle):
+    def drive(self):
+        print(f"The {self.name} is driving.")
+
+
+class Bus(Vehicle):
+    def drive(self):
+        print(f"The {self.name} is driving.")
+
+
+C = Car("Car")
+d = Bus("Bus")
+
+C.start()
+d.start()
+C.drive()
+d.drive()
+C.stop()
+d.stop()
+#Abstract classes
+from abc import ABC, abstractmethod
+
+
+class Vehicle(ABC):
+  @abstractmethod
+  def start(self):
+    pass
+class car(Vehicle):
+  def start(self):
+    print("I am a car")
+
+class Truck(Vehicle):
+  def start(self):
+    print("I am truck")
+
+
+Car=car()
+Car.start()
+TrucK=Truck()
+TrucK.start()
+
+#Special methods
+#Example:
+class Vehicle:
+  def __init__(self,name,color,price,num_tiers):
+    self.name=name
+    self.color=color
+    self.num_tiers=num_tiers
+    self.price=price
+  def __str__(self):
+    return f"{self.color} {self.name} has price of {self.price}"
+  def __add__(self,other):
+    return self.price+other.price
+  def __gt__(self,other):
+    if(self.price>other.price):
+      return True
+    else:
+      return False
+  def __del__(self):
+    print("Object is destroyed")
+
+#Object instantiation
+car=Vehicle("car","red",100000,4)
+bus=Vehicle("bus","blue",100000,8)
+
+#Invoke __str__
+print(car)
+print(bus)
+
+#str(car)
+#str(bus)
+
+#Invoke addition
+car+bus
+#Invoke __gt__:
+car>bus
+#Invoke __del__:
+del car
+#FILE IN PYTHON
+#!touch demo.txt
+#!cat demo.txt
+#Opening files in python
+#Syntax:
+#file_object=open("filename","mode")
+file_obj=open("demo.txt","r")
+print(type(file_obj))
+file_obj=open("demo.txt","w")
+file_obj=open("demo.txt","a")
+file_obj=open("new.txt","x")
+with open("demo.txt","r") as file_obj:
+  file_content=file_obj.read()
+print(file_content)
+with open("demo.txt","r") as file_obj:
+  file_content=file_obj.readline()
+print(file_content)
+with open("demo.txt","r") as file_obj:
+  file_content=file_obj.readlines()
+print(file_content)
+file_o=open("New.txt","r")
+file_contents=file_o.read(5)
+
+print(file_contents)
+file_name="Test_file.txt"
+with open(file_name,"w") as file_object:
+  file_object.write("**Hi I am learning File Handling in python**")
+
+with open(file_name,"a") as file_object:
+  file_object.write("\n I am soon going to learn about AI")
+
+import os
+os.remove('file_name')
+
+#!ls
+#!pwd
+dir(os.path)
+file_name="Test_file.txt"
+with open(file_name,"w") as file_object:
+  file_object.write("**Hi I am learning File Handling in python**")
+fileo="Test_file.txt"
+if os.path.exists("Test_file.txt"):
+  os.remove("Test_file.txt")
+  print(f"File named {fileo} deleted")
+else:
+  print("No such file")
+
+#Database connection
+import sqlite3
+db_name="Users.db"
+conn=sqlite3.connect(db_name)
+print("Opened Database Sucessfully")
+
+conn.execute(""" CREATE TABLE NEWemploye
+(
+  ID                  INT                           PRIMARY KEY                 NOT NULL,
+  NAME                VARCHAR(50)                                               NOT NULL,
+  AGE                 INT                                                       NOT NULL,
+  ADDRESS             TEXT,
+  SALARY              FLOAT
+)
+""")
+print("Table created sucessfully")
+
+
+conn.execute(""" INSERT INTO NEWemploye (ID,NAME,AGE,ADDRESS,SALARY) VALUES(1,"RAM",32,"KATHMANDU",20000000)""")
+print("Data inserted sucessfully")
+
+conn.execute(""" INSERT INTO NEWemploye (ID,NAME,AGE,ADDRESS,SALARY) VALUES(2,"Hari",32,"Bhaktapur",200000)""")
+print("Data inserted sucessfully")
+
+conn.execute(""" INSERT INTO NEWemploye (ID,NAME,AGE,ADDRESS) VALUES(3,"Rama",33,"Lalitpur")""")
+print("Data inserted sucessfully")
+
+conn.execute(""" INSERT INTO NEWemploye (ID,NAME,AGE,SALARY) VALUES(4,"Sita",34,2000)""")
+print("Data inserted sucessfully")
+
+cursor=conn.execute("SELECT id,name,address,salary from NEWemploye")
+for row in cursor:
+  print("ID=",row[0])
+  print("Name=",row[1])
+  print("Address=",row[2])
+  print("Salary=",row[3])
+  print("--------")
+
+items=conn.execute("SELECT *FROM NEWemploye").fetchall()
+print(items)
+
+conn.execute("UPDATE NEWemploye SET salary=250000 where id=4")
+conn.execute("UPDATE NEWemploye SET Address='Pokhara' where id=2")
+conn.commit()
+
+conn.execute("DELETE FROM NEWemploye where name='Sita'")
+conn.commit()
+conn.close()
+print("Connection Ended")
+
+#Exception Handling:
+
+a=int(input("Enter first number"))
+b=int(input("Enter second number"))
+
+division=a/b #ZeroDivisionError occurs if b=0
+print(f"Division a/b=",division)
+print("Division completed")
+
+
+a = int(input("Enter first number: "))
+b = int(input("Enter second number: "))
+
+try:
+    division = a / b
+    print("Division is", division)
+except Exception as e: #This line Can handle any exception and is not exception specific
+    print("Exception occurred:", e)
+
+print("Division completed")
+
+
+a = int(input("Enter first number: "))
+b = int(input("Enter second number: "))
+
+try:
+    division = a / b
+    print("Division is", division)
+except ZeroDivisionError : #This line can handle only ZeroDivisionError
+    print("Division by 0 is not possible")
+
+print("Division completed")
+
+try:
+   int("test")
+except ValueError: #This line can handle only ValueError
+  print("Strings cannot be typecasted into integer")
+  print("Code ran sucessfully")
+
+try:
+ print(we)
+except Exception as e: #NameError
+  print("Error :",e)
+
+#Exception handling with multiple excceptions:
+try:
+  a=int(input("Enter a number"))
+  b=int(input("Enter a number"))
+  
+  division=a/b #if b=0,ZeroDivisionError Exception
+except ValueError:
+  print("Strings cannot be typecastted into integers please input only intergers")
+
+except ZeroDivisionError:
+  print("Division by 0 is not possible")
+
+except Exception as e:
+  print("Error ",e)
+
+#try except else block:
+a=10
+b=10
+try:
+  division=a/b
+
+except ZeroDivisionError:
+  print("From except block")
+  print("Cannot divide by zero")
+
+else:
+  print("No error from else block")
+  print(f"{a}/{b}={division}")
+#try exception finally block:
+try:
+    num=int(input("Enter a number"))
+    result=10/num
+    print("Result:",result)
+
+except ValueError:
+  print("Invalid Input please input only integers")
+  
+except ZeroDivisionError:
+    print("Cannot divide by 0")
+finally:
+    print("Program executed sucessfully")
+#Raising an Exception:
+def raise_exception(num):
+   if num <0:
+      raise ValueError("Square root of negative doesnt exist")
+   else:
+     return num**0.5
+   
+raise_exception(num)
+
+num=40
+try:
+  result=raise_exception(num)
+except Exception as e:
+  print("Error:",e)
