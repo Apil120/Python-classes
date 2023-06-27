@@ -40,3 +40,15 @@ print(2**3)
 print((5+3)*2-4/2)
 print(3**2*4+5//2)
 print(10/(2+3)*(8-4))
+#class Vehicle:
+   # def __init__(self, colour):
+    #    self.colour = colour
+
+   # @classmethod
+    #def display_colour(colour):
+     # print(f"Car colour is: {Self.colour}")
+
+#car1 = Vehicle("red")
+#car1.display_colour()
+
+
