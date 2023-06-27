@@ -105,3 +105,83 @@ for x in range(1,6):
     for y in range(1,6):
         for z in range(1,6):
             print(x, y, z)
+#Use recursion to print the fibonacci series
+def fibonacci(n):
+    if n <= 1:
+        return n
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+for i in range(20):
+    print(fibonacci(i))
+
+#Experiment with private and protected attributes
+
+class New:
+  def __init__(self,name):
+    self.a=10
+    self._b=20
+    self.__c=30
+New=New("name")
+print(New.a)
+print(New._b)
+#The line below will return an error as it is directing the print function to a private attribute which can be identified by the two underscores infront of the var name.
+print(New.__c)
+
+#Explore hierarchial inherticance:
+#Base class:
+class Vehicle:
+    def __init__(self, name):
+        self.name = name
+
+    def start(self):
+        print(f"The {self.name} is starting.")
+
+    def stop(self):
+        print(f"The {self.name} is stopped.")
+
+#Derived classes:
+class Car(Vehicle):
+    def drive(self):
+        print(f"The {self.name} is driving.")
+
+
+class Bus(Vehicle):
+    def drive(self):
+        print(f"The {self.name} is driving.")
+
+
+C = Car("Car")
+d = Bus("Bus")
+
+C.start()
+d.start()
+C.drive()
+d.drive()
+C.stop()
+d.stop()
+
+#Q. Write a python program to create abstract class with method start(). Create another 2 class Car and Truck inherited from Abstract Class with the implementation of abstract method.
+#Abstract classes
+from abc import ABC, abstractmethod
+
+
+class Vehicle(ABC):
+  @abstractmethod
+  def start(self):
+    pass
+class car(Vehicle):
+  def start(self):
+    print("I am a car")
+
+class Truck(Vehicle):
+  def start(self):
+    print("I am truck")
+
+
+Car=car()
+Car.start()
+TrucK=Truck()
+TrucK.start()
+
+#Experiment with  def __len__ and special methods
+#INSTALL AND SETUP DBEAVER
